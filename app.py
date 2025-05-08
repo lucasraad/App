@@ -1,6 +1,8 @@
 import os #biblioteca OS
 
-restaurantes = ['Mr_House', 'Pizzaria', 'Yoshin'] # lista
+restaurantes = [{'nome':'Mr.House', 'categoria':'hambugueria', 'ativo':False},
+               {'nome':'Yoshin', 'categoria':'sushi', 'ativo':True}, 
+               {'nome':'Bar da tita', 'categoria':'bar', 'ativo':True}] # lista[], biblioteca{}
 
 def exibir_nome_do_programa():
      print("""
@@ -37,7 +39,9 @@ def exibir_subtitulo(texto):
 def cadastrar_novo_restaurante():
      exibir_subtitulo('Cadasto de novos restaurantes\n')
      nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
-     restaurantes.append(nome_do_restaurante) # append adiciona
+     categoria = input(f'Digite o nome da categoria do restaurante {nome_do_restaurante}: ')
+     dados_do_restaurante = {'nome':nome_do_restaurante, 'categoria':categoria, 'ativo':False}
+     restaurantes.append(dados_do_restaurante)
      print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!')
      
      voltar_ao_menur_principal()
@@ -47,7 +51,10 @@ def listar_restaurantes():
 
      # para cada restaurante na lista restaurantesss:
      for restaurante in restaurantes:
-          print(f'.{restaurante}')
+          nome_restaurante = restaurante['nome']
+          categoria = restaurante['categoria']
+          ativo = restaurante['ativo']
+          print(f'- {nome_restaurante} | {categoria} | {ativo}')
 
      voltar_ao_menur_principal()
 
